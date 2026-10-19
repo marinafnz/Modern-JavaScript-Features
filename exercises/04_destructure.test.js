@@ -1,3 +1,5 @@
+const { add } = require("lodash")
+
 const noop = () => {}
 
 const getAddress = () => ({
@@ -17,10 +19,10 @@ const getNestedNumbers = () => [1, 2, [3, 4, [5, 6]]]
 
 test('04_destructure-1: can be used to pull apart objects', () => {
   // Utilitzant desestructuració, crida `getAddress()` per crear variables per 'city', 'state' i 'zip'.
-  // const address = getAddress();
-  // const city = address.city;
-  // const state = address.state;
-  // const zip = address.zip;
+  const address = getAddress();
+  const city = address.city;
+  const state = address.state;
+  const zip = address.zip;
   expect(city).toBe('Salt Lake City')
   expect(state).toBe('UT')
   expect(zip).toBe(84115)
@@ -34,7 +36,11 @@ test('04_destructure-2: sets missing values to undefined', () => {
 
 test('04_destructure-3: can be used to pull apart objects', () => {
   // Utilitzant desestructuració, crida `getAddress()` i crea les variables 'city', 'state' i 'zip'.
-  
+  getAddress()
+  const city = address.city
+  const state = address.state
+  const zip = address.zip
+
   expect(city).toBe('Salt Lake City')
   expect(state).toBe('UT')
   expect(zip).toBe(84115)
@@ -49,6 +55,9 @@ test('04_destructure-4: sets missing values to undefined', () => {
 test('04_destructure-5: can alias destructured variables', () => {
   // Utilitzant desestructuració, crida `getAddress()` i extreu 'city', 'state' i 'zip', i assigna'ls els àlies c, s, z, respectivament.
   
+  getAddress()
+  let {city: c,state: s , zip: z } = alias 
+
   expect(c).toBe('Salt Lake City')
   expect(s).toBe('UT')
   expect(z).toBe(84115)
@@ -60,6 +69,11 @@ test('04_destructure-5: can alias destructured variables', () => {
 test('04_destructure-6: can destructure nested variables', () => {
   // Utilitzant desestructuració, crida `getAddress()` i crea les variables `lat` i `long`.
   
+ getAddress()
+  
+  let lat 
+  let long 
+
   expect(lat).toBe(40.776608)
   expect(long).toBe(-111.920485)
   expect(() => noop(coords)).toThrow()
@@ -67,6 +81,11 @@ test('04_destructure-6: can destructure nested variables', () => {
 
 test('04_destructure-7: can be used to pull apart arrays', () => {
   // Crida a getNumbers i extreu el primer valor com `one` i el segon com `two`.
+
+  const numbers = getNumbers()
+  const [one] = 1
+  const [two] = 2
+  
   
   expect(one).toBe(1)
   expect(two).toBe(2)
@@ -74,6 +93,10 @@ test('04_destructure-7: can be used to pull apart arrays', () => {
 
 test('04_destructure-8: can skip indexes in arrays', () => {
   // Crida a getNumbers i extreu el primer valor com `one` i el tercer com `three`.
+
+  getNumbers()
+  const [one] = 0
+  const [three] = 2
   
   expect(one).toBe(1)
   expect(three).toBe(3)
@@ -83,6 +106,9 @@ test('04_destructure-8: can skip indexes in arrays', () => {
 test('04_destructure-9: can reach nested arrays', () => {
   // Crida a getNestedNumbers i extreu el primer valor com `one`, el 3 com `three` i el 6 com `six`.
   
+  getNestedNumbers() 
+  const [one,[three,[six]]] = nNumbers 
+
   expect(one).toBe(1)
   expect(three).toBe(3)
   expect(six).toBe(6)
