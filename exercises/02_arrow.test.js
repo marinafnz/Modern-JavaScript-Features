@@ -1,6 +1,12 @@
 test('02_arrow-1: pot substituir funcions tradicionals', () => {
   let fnMultiply, arrowMultiply
 
+  function fnMultiply (a,b) {
+   let c = a * b 
+   return c
+  }
+
+   arrowMultiply = (a,b) => { return a*b }
   // Escriu dues funcions que prenguin dos paràmetres i retornin el seu producte
   // Per a 'fnMultiply', assigna-li una funció tradicional
   // Per a 'arrowMultiply', assigna-li una funció fletxa
@@ -15,10 +21,11 @@ test('02_arrow-2: pot substituir funcions tradicionals #2', () => {
   //Refactoritza la funció utilitzant una funció fletxa per simplificar-lo, assegurant-te que el test segueix passant.
   //Pista: una funció fletxa amb una sola expressió pot ometre les claus i el `return`.
 
-  const squares = nums.map(function(num) {
-    return num * num
-  })
+  // const squares = nums.map(function(num) {
+  //   return num * num
+  // })
   
+  const squares = (nums.map(num=> num * num ))  ;
   expect(squares.shift()).toBe(4)
   expect(squares.shift()).toBe(25)
   expect(squares.shift()).toBe(100)
@@ -30,10 +37,10 @@ test('02_arrow-3: lliga `this` a l\'àmbit d\'avaluació, no a l\'àmbit d\'exec
   // per permetre que 'this' mantingui el context correctament
   
   const person = {
-    name: 'Aaron',
+    name: 'Renato',
     greetFriends: function(friends) {
       return friends.map(function(friend) {
-        return this.name + ' saluda a ' + friend
+        return this.name + ' saluda cordialmente a ' + friend
       })
     },
   }
@@ -41,6 +48,8 @@ test('02_arrow-3: lliga `this` a l\'àmbit d\'avaluació, no a l\'àmbit d\'exec
   const friendsArray = ['Naomi', 'Jojo', 'Ryan', 'Owen']
   expect(() => person.greetFriends(friendsArray)).not.toThrow()
 })
+
+  const arrowFriends = (person, friendsArray) => {return person.greetFriends(friendsArray)}
 
 test('02_arrow-4: pot fer que les cadenes de filtres d\'arrays siguin més manejables', () => {
   const data = [
@@ -62,16 +71,27 @@ test('02_arrow-4: pot fer que les cadenes de filtres d\'arrays siguin més manej
     .filter(function(d) {
       return d.type != 'Widget'
     }) // Elimina els Widgets
+
+    .filter(d => type != `Widget`)
+
     .filter(function(d) {
       return d.price < 5
     }) // Troba només els elements restants amb preu < 5
+
+    .filter(d =>  d.price < 5 )
+
     .sort(function(a, b) {
       return a.qty - b.qty
     }) // Ordena per quantitat, descendent
+
+    .sort(a, b =>  a.qty - b.qty)
+
     .map(function(d) {
       return d.name
     }) // Extreu només el nom de cada element
   
+    .map(d  =>  d.name)
+
   expect(shoppingList.shift()).toBe('Bacon')
   expect(shoppingList.shift()).toBe('JT Best Hits')
 })
