@@ -17,15 +17,14 @@ test("13_weakmap-2: should enable private members in classes", () => {
     constructor(name, age) {
       this._name = name;
       this._age = age;
+      
     }
 
     getName() {
-      myWeak.set(this, person, this._name)
       return this._name;
     }
 
     getAge() {
-      myWeak.set(this, person, this._age)
       return this._age;
     }
   }
