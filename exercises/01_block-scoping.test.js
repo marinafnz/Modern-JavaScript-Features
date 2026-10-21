@@ -35,7 +35,7 @@ test('01_scope-4: is trapped inside of an `if` statement', () => {
     // Canvia `var` a `let`, perquè b estigui limitat dins de l\'if
     let b = 1
   }
-  expect(() => noop(b)).toThrow(b)
+  expect(() => noop(b)).toThrow('b')
 })
 
 test('01_scope-5: can\'t redeclare using the same name', () => {
@@ -57,12 +57,12 @@ test('01_scope-6: means that we can start using block statements', () => {
     const  d = 2
   }
 
-  expect(() => noop(d, d)).toThrow(d)
+  expect(() => noop(d, d)).toThrow('d')
 })
 
 //////// EXTRA CREDIT ////////
 
-test.skip('01_scope-7: means that we can declare constant with the same name in block statement', () => {
+test('01_scope-7: means that we can declare constant with the same name in block statement', () => {
   // Declara una 'd' utilitzant 'const', assignant-li el valor 5
   // BLOC DE CODI
   const d = 5
