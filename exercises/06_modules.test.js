@@ -5,6 +5,8 @@ import {sqrt as mySqrt, square as mySquare} from '../common/Mathy'
 
 import {add} from '../common/Mathy'
 
+import _ from 'lodash'
+
 
 
 test('can import Mathy', () => {
@@ -24,7 +26,7 @@ test('06_modules-1: can specify what to import, to only retain pieces of the imp
 
 test('06_modules-2: can import from my node_modules', () => {
   // import `lodash`
-  expect(_).toBeDefined()
+    expect(_).toBeDefined()
 })
 
 test('06_modules-3: can import Mathy', () => {
