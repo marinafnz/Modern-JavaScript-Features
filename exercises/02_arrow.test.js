@@ -1,18 +1,18 @@
+
 test('02_arrow-1: pot substituir funcions tradicionals', () => {
-  let fnMultiply, arrowMultiply
 
   function fnMultiply (a,b) {
    let c = a * b 
    return c
   }
 
-   arrowMultiply = (a,b) => { return a*b }
+  const arrowMultiply = (a,b) => { return a*b }
   // Escriu dues funcions que prenguin dos paràmetres i retornin el seu producte
   // Per a 'fnMultiply', assigna-li una funció tradicional
   // Per a 'arrowMultiply', assigna-li una funció fletxa
 
   expect(fnMultiply(5, 5)).toBe(arrowMultiply(5, 5))
-})
+}) 
 
 test('02_arrow-2: pot substituir funcions tradicionals #2', () => {
   const nums = [2, 5, 10]
@@ -24,7 +24,8 @@ test('02_arrow-2: pot substituir funcions tradicionals #2', () => {
   // const squares = nums.map(function(num) {
   //   return num * num
   // })
-  
+
+    
   const squares = (nums.map(num=> num * num ))  ;
   expect(squares.shift()).toBe(4)
   expect(squares.shift()).toBe(25)
@@ -36,13 +37,18 @@ test('02_arrow-3: lliga `this` a l\'àmbit d\'avaluació, no a l\'àmbit d\'exec
   // Modifica l'objecte 'person'. Una de les funcions hauria de convertir-se en una funció fletxa
   // per permetre que 'this' mantingui el context correctament
   
+  // const person = {
+  //   name: 'Renato',
+  //   greetFriends: function(friends) {
+  //     return friends.map(function(friend) {
+  //       return this.name + ' saluda cordialmente a ' + friend
+  //     })
+  //   },
+  // }
+
   const person = {
     name: 'Renato',
-    greetFriends: function(friends) {
-      return friends.map(function(friend) {
-        return this.name + ' saluda cordialmente a ' + friend
-      })
-    },
+    greetFriends: (friend) => { person.name + ' saluda cordialmente a ' + friend }
   }
 
   const friendsArray = ['Naomi', 'Jojo', 'Ryan', 'Owen']
@@ -68,29 +74,29 @@ test('02_arrow-4: pot fer que les cadenes de filtres d\'arrays siguin més manej
   // Refactoritza totes les funcions utilitzant funcions fletxa per fer el codi més concís i llegible, assegurant-te que el test segueix passant.
 
   const shoppingList = data
-    .filter(function(d) {
-      return d.type != 'Widget'
-    }) // Elimina els Widgets
+    // .filter(function(d) {
+    //   return d.type != 'Widget'
+    // }) // Elimina els Widgets
 
-    .filter(d => type != `Widget`)
+    .filter(d => d.type != 'Widget')
 
-    .filter(function(d) {
-      return d.price < 5
-    }) // Troba només els elements restants amb preu < 5
+    // .filter(function(d) {
+    //   return d.price < 5
+    // }) // Troba només els elements restants amb preu < 5
 
     .filter(d =>  d.price < 5 )
 
-    .sort(function(a, b) {
-      return a.qty - b.qty
-    }) // Ordena per quantitat, descendent
+    // .sort(function(a, b) {
+    //   return a.qty - b.qty
+    // }) // Ordena per quantitat, descendent
 
-    .sort(a, b =>  a.qty - b.qty)
+    .sort((b,a) => b.qty - a.qty)
 
-    .map(function(d) {
-      return d.name
-    }) // Extreu només el nom de cada element
+    // .map(function(d) { 
+    //   return d.name
+    // }) // Extreu només el nom de cada element
   
-    .map(d  =>  d.name)
+    .map(d => d.name)
 
   expect(shoppingList.shift()).toBe('Bacon')
   expect(shoppingList.shift()).toBe('JT Best Hits')
