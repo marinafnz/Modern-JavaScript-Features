@@ -1,7 +1,8 @@
+
 test('17_public-class-fields-1: public class fields help us avoid .bind-ing everything', () => {
   class FakeReactComponent {
     constructor(props) {
-      this.props = props
+      this.props = props 
       this.setState = () => {} // només per diversió
     }
   }
@@ -13,9 +14,7 @@ test('17_public-class-fields-1: public class fields help us avoid .bind-ing ever
       this.handleClick = this.handleClick.bind(this) // trist :-(
     }
     // Converteix `handleClick` en un camp públic de classe utilitzant una funció fletxa (`=>`) perquè mantingui automàticament el valor correcte de `this` sense necessitat de fer `.bind(this)` al constructor.
-    handleClick({target: {value}}) {
-      this.props.onClick(value)
-    }
+    handleClick = ({target: {value}}) => { this.props.onClick(value)}
     render() {
       // coses estranyes de JSX aquí
     }
@@ -31,4 +30,4 @@ test('17_public-class-fields-1: public class fields help us avoid .bind-ing ever
   myComponent.testClick('hello world')
   expect(onClick).toHaveBeenCalledTimes(1)
   expect(onClick).toHaveBeenCalledWith('hello world')
-})
+})  
