@@ -3,7 +3,7 @@
 // Refactoritza'ls utilitzant `async/await` mantenint exactament el mateix comportament i fent que els tests continuïn passant.
 
 const doAsync = (rejectPromise = false) =>  new Promise((resolve, reject) => setTimeout(() => {
-      if (rejectPromise) {
+        if (rejectPromise) {
         reject('rejected')
       } else {
         resolve('resolved')

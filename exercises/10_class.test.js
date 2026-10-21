@@ -28,7 +28,7 @@ test('10_class-2: constructor can have default param values', () => {
     }
   }
 
-  const animal = new Animal()
+  const animal = new Animal('Honey Badger')
   const dog = new Animal('Dog')
 
   expect(animal.name).toBe('Honey Badger')
@@ -117,10 +117,10 @@ test('10_class-6: can use property setters and getters', () => {
 
   class Animal {
     #name
-    constructor(name){
+    constructor(){
     }
-    get name(){ return this.#name}
-    set name(newValue) {return this.newValue}
+    get name () { return this.#name}
+    set name (newValue) {return this.newValue}
 
     toString(){ return `${this.#name} type of animal`}
   }

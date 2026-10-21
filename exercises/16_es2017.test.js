@@ -1,7 +1,7 @@
 test('16_es2016-1: the exponentiation operation can be used to raise a number to a power of another number', () => {
   // refactoritza amb l'operador exponencial (**)
 
-  const result = Math.pow(3, 2)
+  const result = 3^2 // Math.pow(3, 2)
   expect(result).toBe(9)
 })
 
@@ -14,20 +14,23 @@ test('16_es2016-2: array.includes can be used to determine whether an item exist
     {name: 'Ingvar Stepanyan'},
   ]
   // refactoritza  amb `includes`
-  const result = greatFriends.indexOf(bestFriend) !== -1
+  const result = greatFriends.includes(bestFriend)
   expect(result).toBe(true)
 })
 
 test('16_es2017-1: String.prototype.padStart saves us from left-pad-gate', () => {
   const originalString = 'Worlds Finest'
   // crida a padStart en aquesta cadena per fer que el test passi
-  const result = originalString
+  const result = originalString.padStart(4, "0")
   expect(result).toBe('    Worlds Finest')
 })
+
+
 
 test('16_es2017-2: String.prototype.padEnd (and padStart) can be given a string to pad with', () => {
   const originalString = 'Stronger Together'
   // crida a padEnd en aquesta cadena per fer que el test passi
+  const result = originalString.padEnd(10, "-123-123-1")
   expect(result).toBe('Stronger Together-123-123-1')
 })
 
