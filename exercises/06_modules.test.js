@@ -5,9 +5,9 @@ import {sqrt as mySqrt, square as mySquare} from '../common/Mathy'
 
 import {add} from '../common/Mathy'
 
+const lodash = _
+
 import _ from 'lodash'
-
-
 
 test('can import Mathy', () => {
   // this one's already done! You're welcome :)
@@ -47,7 +47,7 @@ test('06_modules-5: can import from my node_modules', () => {
 })
 
 //////// EXTRA CREDIT ////////
-test.skip('Index import', () => {
+test('Index import', () => {
   //I have noticed that using index.js is pretty common pattern
   //If someone has been confused about that maybe this helps
   expect(IndexImport.variable1).toBe('Bob')
