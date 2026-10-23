@@ -9,9 +9,9 @@ test('05_template-literals-1: should support string interpolation', () => {
       'Joe Eames',
       'Ryan Florence',
     ],
-  }
+  } 
   // construeix una cadena utilitzant la interpolació de literals de plantilla
-  const personsFriends = ` ${person.name} has 6 friends: ${person.friends.join(', ')}.`
+  const personsFriends = `${person.name} has 6 friends: ${person.friends.join(', ')}`
   expect(personsFriends).toBe(
     'Kent C. Dodds has 6 friends: Brooke Dodds, Matt Zabriskie, Aaron Frost, Dave Geddes, Joe Eames, Ryan Florence',
   )
@@ -35,9 +35,11 @@ test('05_template-literals-3: should support string escaping', () => {
 test.skip('05_template-literals-4: should call the tagging function', () => {
   const tagIt = (literalString, ...interpolatedParts) => {
     // implementa aquesta funció per fer que el test passi
-    
-    return 'fixme'
+        return 'fixme'
   }
+
+  
+
   const noun = 'World'
   const emotion = 'happy'
   const result = tagIt`Hello ${noun}! Are you feeling ${emotion} today?`
