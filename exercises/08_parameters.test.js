@@ -1,8 +1,7 @@
-import { first } from "lodash"
 
 test('08_parameters-1: can be triggered when the incoming argument is undefined', () => {
   const getName = (name = 'Mercury') => name
-
+ 
   // Comprova que el valor per defecte només s'utilitza quan l'argument és `undefined`
   expect(getName('Aaron')).toBe('Aaron')
   expect(getName(undefined)).toBe('Mercury')
@@ -44,14 +43,14 @@ test('08_parameters-4: catch non-specified params', () => {
 
   // Comprova que els paràmetres rest contenen els arguments no especificats
   expect(resty().length).toBe(0)
-  expect(resty(1).length).toBe(1)
-  expect(resty(1, 2).length).toBe(2)
-  expect(resty(1, 2, 3).length).toBe(3)
+  expect(resty(1).length).toBe(0)
+  expect(resty(1, 2).length).toBe(0)
+  expect(resty(1, 2, 3).length).toBe(1)
   expect(
     resty(1, 2, 3, undefined, 5, undefined, 7, undefined, 9, 10).length,
-  ).toBe(10)
+  ).toBe(8)
 })
-
+ 
 test('08_parameters-5: has a different length than `arguments`', () => {
   const resty = function (first, second, ...others) {
     return others.length === arguments.length
@@ -81,18 +80,18 @@ test('08_parameters-6: is an actual array, unlike arguments', () => {
   // Recorda que `arguments` només existeix en funcions tradicionals.
   expect(
     Object.getPrototypeOf(args) === Object.getPrototypeOf(rests),
-  ).toBe(true)
-  expect(args.splice).toBe(1,2,3)
-  expect(Object.getPrototypeOf(rests)).toBe(Array)
-  expect(rests.splice).toBeDefined(null)
-  expect(rests.splice).toBe(0)
+  ).toBe(false)
+  expect(args.splice).toBe(undefined)
+  expect(Object.getPrototypeOf(rests)).toBe(Array.prototype)
+  expect(rests.splice).toBeDefined()
+  expect(rests.splice).toBe(Array.prototype.splice)
 })
 
 test('08_parameters-7: it can default all arguments, optionally', () => {
   // Modifica la signatura del mètode `myFunction` per permetre que
   // tots els arguments siguin opcionals
 
-  const myFunction = ({ name, age, favoriteBand } = {}) => {
+  const myFunction = ({ name = 'Axel', age = 37, favoriteBand ='Taylor Swift'  } = {}) => {
     expect(name).toBeDefined()
     expect(age).toBeDefined()
     expect(favoriteBand).toBeDefined()
@@ -101,8 +100,8 @@ test('08_parameters-7: it can default all arguments, optionally', () => {
   myFunction({ name: 'Axel', age: 37, favoriteBand: 'Taylor Swift' })
   myFunction({ name: 'Axel', age: 37 })
   myFunction({ name: 'Axel' })
-  myFunction({ age: 37, favoriteBand: 'Taylor Swift'})
-  myFunction({ favoriteBand: 'Taylor Swift'})
+  myFunction({ age: 37, favoriteBand: 'Taylor Swift' })
+  myFunction({ age: 37 })
 })
 
 /*
