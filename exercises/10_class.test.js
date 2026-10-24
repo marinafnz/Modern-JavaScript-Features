@@ -24,7 +24,7 @@ test('10_class-2: constructor can have default param values', () => {
   class Animal {
     name; 
     constructor(name){
-    this.name = 'Honey Badger';
+    this.name = name;
     }
   }
 
@@ -62,10 +62,10 @@ test('10_class-4: can have static methods', () => {
   class Animal {
     name;
     constructor(name){
-    this.name = 'Honey Badger';
+    this.name = name;
     }
     static create(name){
-      return new animal(name)
+      return new Animal(name)
     }
   }
 
@@ -119,12 +119,9 @@ test('10_class-6: can use property setters and getters', () => {
     #name
     constructor(){
     }
-    get name () { return this.#name}
-    set name (newValue) {return this.newValue}
-
-    toString(){ return `${this.#name} type of animal`}
-  }
-    
+    get name () { return this.#name + " type of animal"}
+    set name (newValue) { this.#name = newValue}
+  }   
 
   const animal = new Animal()
   animal.name = 'Dog'
