@@ -1,3 +1,5 @@
+import { jest } from '@jest/globals'
+import _ from 'lodash'
 
 test('17_public-class-fields-1: public class fields help us avoid .bind-ing everything', () => {
   class FakeReactComponent {
@@ -6,7 +8,7 @@ test('17_public-class-fields-1: public class fields help us avoid .bind-ing ever
       this.setState = () => {} // només per diversió
     }
   }
-
+ 
   class MyComponent extends FakeReactComponent {
     constructor(...args) {
       super(...args)
