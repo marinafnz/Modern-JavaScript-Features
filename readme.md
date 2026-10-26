@@ -6,7 +6,7 @@
 - Frontend: JAVASCRIPT
 
 ## 🚀 Instal·lació  
-1. Clonar el repositori: `git clone ...`  
+1. Clonar el repositori: `git clone https://github.com/marinafnz/Modern-JavaScript-Features`  
 2. Instal·lar dependències: `npm install`  
 
 ## 📸 Demo  
