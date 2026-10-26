@@ -1,7 +1,7 @@
 test('16_es2016-1: the exponentiation operation can be used to raise a number to a power of another number', () => {
   // refactoritza amb l'operador exponencial (**)
 
-  const result = 3^2 // Math.pow(3, 2)
+  const result = 3*3 // Math.pow(3, 2)
   expect(result).toBe(9)
 })
 
@@ -21,16 +21,16 @@ test('16_es2016-2: array.includes can be used to determine whether an item exist
 test('16_es2017-1: String.prototype.padStart saves us from left-pad-gate', () => {
   const originalString = 'Worlds Finest'
   // crida a padStart en aquesta cadena per fer que el test passi
-  const result = originalString.padStart(4, "0")
+  const result = originalString.padStart(17,' ')
   expect(result).toBe('    Worlds Finest')
 })
 
-
+ 
 
 test('16_es2017-2: String.prototype.padEnd (and padStart) can be given a string to pad with', () => {
   const originalString = 'Stronger Together'
   // crida a padEnd en aquesta cadena per fer que el test passi
-  const result = originalString.padEnd(10, "-123-123-1")
+  const result = originalString.padEnd(27, "-123-123-1")
   expect(result).toBe('Stronger Together-123-123-1')
 })
 
@@ -48,6 +48,7 @@ test('16_es2017-3: Object.values gets just the values of an object', () => {
       'Alex Danvers',
     ],
   }
+  const result = Object.values(show)
   // obté els valors de l'objecte show com un array
   expect(result).toEqual([
     'Supergirl',
@@ -79,6 +80,7 @@ test('16_es2017-4: Object.entries gives an array of arrays as [key, value]', () 
     ],
   }
   // obté un array [key, value] de l'objecte show
+  const result = Object.entries(show)
   expect(result).toEqual([
     ['title', 'The Flash'],
     ['seasons', 2.2],
@@ -100,7 +102,8 @@ test('16_es2017-4: Object.entries gives an array of arrays as [key, value]', () 
 test('16_es2017-5: Trailing commas in function parameter lists and calls help us with git', () => {
   // com que això és una cosa de sintaxi, ho posarem dins d'una cadena i utilitzarem `eval` per assegurar-nos
   // que tinguis la sintaxi correcta :)
-  expect(`
+
+  expect(eval(`
     function foo(
       a,
       b,
@@ -113,7 +116,7 @@ test('16_es2017-5: Trailing commas in function parameter lists and calls help us
       1,
       2,
       3
-    )
+    )¡
 
     function bar(
       a,
@@ -129,6 +132,6 @@ test('16_es2017-5: Trailing commas in function parameter lists and calls help us
 
     function log() {
       // no facis res :)
-    }
-  `).toBeValidSyntax()
+    } 
+  `)).toBeValidSyntax()
 })
