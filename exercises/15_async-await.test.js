@@ -12,13 +12,13 @@ const doAsync = (rejectPromise = false) =>  new Promise((resolve, reject) => set
   )
 
   test('15_async-await-1: should work with resolved promises', async () => {
-  return doAsync().then(result => {
+  const result  = await (result => {
     expect(result).toBe('resolved')
   })
 })
 
 test('15_async-await-2: should throw an error with a rejected promise', async () => {
-  return doAsync(true).catch(error => {
+  const error = doAsync().catch(error => {
     expect(error).toBe('rejected')
   })
 })
